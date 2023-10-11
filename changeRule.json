@@ -1,0 +1,114 @@
+[
+    {
+      "symbol": "ETH",
+      "from": "1",
+      "to": "19",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    {
+      "symbol": "ETH",
+      "from": "2",
+      "to": "19",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    {
+      "symbol": "ETH",
+      "from": "3",
+      "to": "19",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    {
+      "symbol": "ETH",
+      "from": "4",
+      "to": "19",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    {
+      "symbol": "ETH",
+      "from": "7",
+      "to": "19",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    {
+      "symbol": "ETH",
+      "from": "14",
+      "to": "19",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    
+    
+
+
+    {
+      "symbol": "ETH",
+      "from": "19",
+      "to": "1",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    {
+      "symbol": "ETH",
+      "from": "19",
+      "to": "2",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    {
+      "symbol": "ETH",
+      "from": "19",
+      "to": "3",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    {
+      "symbol": "ETH",
+      "from": "19",
+      "to": "4",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    {
+      "symbol": "ETH",
+      "from": "19",
+      "to": "7",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    },
+    {
+      "symbol": "ETH",
+      "from": "19",
+      "to": "14",
+      "gasFee": "0.1",
+      "maxPrice":100,
+      "minPrice":0.0005,
+      "tradingFee": "0.00001"
+    }
+  ]
