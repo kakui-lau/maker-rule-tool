@@ -1,6 +1,6 @@
 import fs from "fs";
 import 'dotenv/config'
-const makerList1 = require('./temp/new-rules.json')
+const makerList1 = require('./temp/feNewFule.json')
 import { clone } from 'lodash';
 const result: any = {
 }

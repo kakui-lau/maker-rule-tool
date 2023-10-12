@@ -56,7 +56,7 @@ for (const chainId in feMakerList) {
         let ruleItem: any = {
             "id": "",
             "tName": toTokenSymbol,
-            "makerAddress": makerAddress,
+            "makerAddress": makerAddress.toLocaleLowerCase(),
             "c1ID": "",
             "c2ID": "",
             "c1Name": "",
@@ -94,16 +94,16 @@ for (const chainId in feMakerList) {
         if (+fromChainId < +toChainId) {
             ruleItem.c1ID = +fromChainId;
             ruleItem.c2ID = +toChainId;
-            // ruleItem.c1Name = fromChain.name;
-            // ruleItem.c2Name = toChain.name;
+            ruleItem.c1Name = fromChain.name.toLocaleLowerCase();
+            ruleItem.c2Name = toChain.name.toLocaleLowerCase();
             ruleItem.t1Address = fromToken.address;
             ruleItem.t2Address = toToken.address;
 
         } else {
             ruleItem.c1ID = +toChainId;
             ruleItem.c2ID = +fromChainId;
-            // ruleItem.c1Name = toChain.name;
-            // ruleItem.c2Name = fromChain.name;
+            ruleItem.c1Name = toChain.name.toLocaleLowerCase();
+            ruleItem.c2Name = fromChain.name.toLocaleLowerCase();
             ruleItem.t1Address = toToken.address;
             ruleItem.t2Address = fromToken.address;
         }
@@ -122,22 +122,16 @@ for (const chainId in feMakerList) {
         }
         const item1 = oldMakerList.find(m => m.c1ID == ruleItem.c1ID || m.c2ID === ruleItem.c1ID);
         if (item1) {
-            ruleItem.c1Name = item1.c1ID == ruleItem.c1ID ? item1.c1Name : item1.c2Name;
-            if (!ruleItem.c1Name) {
-                const chain = chains.find(c => +c.internalId == +item1.c1ID);
-                if (chain) {
-                    ruleItem.c1Name = chain.name;
-                }
+            const c1Name = item1.c1ID == ruleItem.c1ID ? item1.c1Name : item1.c2Name;
+            if (c1Name) {
+                ruleItem.c1Name = c1Name;
             }
         }
         const item2 = oldMakerList.find(m => m.c1ID == ruleItem.c2ID || m.c2ID === ruleItem.c2ID);
         if (item2) {
-            ruleItem.c2Name = item2.c1ID == ruleItem.c2ID ? item2.c1Name : item2.c2Name;
-            if (!ruleItem.c2Name) {
-                const chain = chains.find(c => +c.internalId == +item2.c1ID);
-                if (chain) {
-                    ruleItem.c2Name = chain.name;
-                }
+            const c2Name = item2.c1ID == ruleItem.c2ID ? item2.c1Name : item2.c2Name;
+            if (c2Name) {
+                ruleItem.c2Name = c2Name;
             }
         }
         ruleItem.id = `${ruleItem.c1ID}-${ruleItem.c2ID}/${ruleItem.tName}`;
@@ -153,10 +147,14 @@ for (const chainId in feMakerList) {
             ruleItem.c2MaxPrice = pair2.maxPrice;
             ruleItem.c2TradingFee = pair2.tradingFee;
             ruleItem.c2GasFee = pair2.gasFee;
-            if (ruleItem.id === '4-15/ETH') {
-                console.log(pair2, '===pair2', symbolId)
-            }
         }
+        if (!ruleItem.c1Name) {
+            throw new Error('c1Name not found')
+        }
+        if (!ruleItem.c2Name) {
+            throw new Error('c2Name not found')
+        }
+
         if (pair1 && pair2) {
             console.debug('双向规则：', `链：${fromChain.name} - ${toChain.name}         符号： ${fromToken.symbol}/${toToken.symbol}`);
         } else {
@@ -166,6 +164,7 @@ for (const chainId in feMakerList) {
     }
 }
 const groupData = groupBy(makerList, 'tName');
+console.log('总配置数:', makerList.length)
 for (const symbol in groupData) {
     console.debug(`Maker ${evmMaker} 符号:${symbol}， 配置条数:${groupData[symbol].length}`);
 }
