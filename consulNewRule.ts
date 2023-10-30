@@ -1,6 +1,7 @@
 import fs from "fs";
 import 'dotenv/config'
-const makerList1 = require('./temp/feNewFule.json')
+const evmMaker = process.env['evmMaker']?.toLocaleLowerCase() || "";
+const makerList1 = require(`./temp/feNewFule-${evmMaker}.json`)
 import { clone } from 'lodash';
 const result: any = {
 }

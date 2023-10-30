@@ -1,6 +1,7 @@
 import fs from "fs";
 import 'dotenv/config'
-const feMakerList = require('./temp/feNewFule.json')
+const evmMaker = process.env['evmMaker']?.toLocaleLowerCase() || "";
+const feMakerList = require(`./temp/feNewFule-${evmMaker}.json`)
 import { orderBy, groupBy } from 'lodash';
 const makerList: any[] = [];
 import chains from './chains.json';
@@ -8,7 +9,6 @@ import { makerList as oldMakerList } from './nowMakerList';
 for (const chain of chains) {
     chain.tokens.push((chain.nativeCurrency || {}) as never)
 }
-const evmMaker = process.env['evmMaker']?.toLocaleLowerCase();
 import makersAddrMap from './evmMapStarknet';
 for (const chainId in feMakerList) {
     const symbolResult = feMakerList[chainId];
@@ -168,4 +168,4 @@ console.log('总配置数:', makerList.length)
 for (const symbol in groupData) {
     console.debug(`Maker ${evmMaker} 符号:${symbol}， 配置条数:${groupData[symbol].length}`);
 }
-fs.writeFileSync(`./temp/backendNewRule.json`, JSON.stringify(orderBy(makerList, ['c1ID', 'c2ID'], ['asc', 'asc'])))
+fs.writeFileSync(`./temp/backendNewRule-${evmMaker}.json`, JSON.stringify(orderBy(makerList, ['c1ID', 'c2ID'], ['asc', 'asc']), null,"\t"))

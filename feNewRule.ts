@@ -5,16 +5,16 @@ import newRules from './changeRule.json';
 import chains from './chains.json';
 import { cloneDeep } from 'lodash';
 const rules: any = cloneDeep(makerList1);
+const rulesArrs = [];
 import makersAddrMap from './evmMapStarknet';
-// const evmMaker = process.env['evmMaker']?.toLocaleLowerCase();
 for (const chain of chains) {
     chain.tokens.push((chain.nativeCurrency || {}) as never)
 }
 for (const row of newRules) {
-    const gas1 = +row.gasFee.replace('%', '');
+    const gas1 = +String(row.gasFee).replace('%', '');
     row.gasFee = gas1 * 10 as any;
     row.tradingFee = +row.tradingFee as any;
-    const fromChain = chains.find(c => c.internalId == row.from);
+    const fromChain = chains.find(c => String(c.internalId) == String(row.from));
     if (!fromChain) {
         throw new Error('fromChain not found');
     }
@@ -22,7 +22,7 @@ for (const row of newRules) {
     if (!fromToken) {
         throw new Error('fromToken not found');
     }
-    const toChain = chains.find(c => c.internalId == row.to);
+    const toChain = chains.find(c => String(c.internalId) === String(row.to));
     if (!toChain) {
         throw new Error('toChain not found');
     }
@@ -50,12 +50,7 @@ for (const row of newRules) {
             "startTime": 0,
             "endTime": 99999999999999
         }
-        if (row.maxPrice) {
-            newRuleItem.maxPrice = +row.maxPrice;
-        }
-        if (row.minPrice) {
-            newRuleItem.minPrice = +row.minPrice;
-        }
+
         if (+fromChain.internalId == 4) {
             newRuleItem.makerAddress = makersAddrMap[`${row.symbol}-4`];
             newRuleItem.sender = makersAddrMap[`${row.symbol}`];
@@ -74,11 +69,12 @@ for (const row of newRules) {
             newRuleItem.maxPrice = 5;
             newRuleItem.minPrice = 0.005;
         }
-        if (row.maxPrice) {
-            newRuleItem.maxPrice = +row.maxPrice;
+        const { maxPrice, minPrice } = row as any;
+        if (maxPrice) {
+            newRuleItem.maxPrice = +maxPrice;
         }
-        if (row.minPrice) {
-            newRuleItem.minPrice = +row.minPrice;
+        if (minPrice) {
+            newRuleItem.minPrice = +minPrice;
         }
         chainRule[`${fromToken.symbol}-${toToken.symbol}`] = newRuleItem;
     } else {
@@ -93,6 +89,7 @@ for (const row of newRules) {
     }
     rules[`${fromChain.internalId}-${toChain.internalId}`] = chainRule;
 }
+const evmMaker = process.env['evmMaker']?.toLocaleLowerCase() || "";
 for (const chainId in rules) {
     const [fromChain, toChain] = chainId.split('-');
     for (const symbolId in rules[chainId]) {
@@ -124,4 +121,5 @@ for (const chainId in rules) {
         }
     }
 }
-fs.writeFileSync(`./temp/feNewFule.json`, JSON.stringify(rules))
+
+fs.writeFileSync(`./temp/feNewFule-${evmMaker}.json`, JSON.stringify(rules))

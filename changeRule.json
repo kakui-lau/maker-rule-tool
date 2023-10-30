@@ -1,38 +1,31 @@
 [
-    {
-      "symbol": "ETH",
-      "from": "2",
-      "to": "19",
-      "gasFee": "0.1",
-      "maxPrice":100,
-      "minPrice":0.0005,
-      "tradingFee": "0.00001"
-    },
-    {
-      "symbol": "ETH",
-      "from": "4",
-      "to": "19",
-      "gasFee": "0.1",
-      "maxPrice":100,
-      "minPrice":0.0005,
-      "tradingFee": "0.00001"
-    },
-    {
-      "symbol": "ETH",
-      "from": "19",
-      "to": "2",
-      "gasFee": "0.1",
-      "maxPrice":100,
-      "minPrice":0.0005,
-      "tradingFee": "0.00001"
-    },
-    {
-      "symbol": "ETH",
-      "from": "19",
-      "to": "4",
-      "gasFee": "0.1",
-      "maxPrice":100,
-      "minPrice":0.0005,
-      "tradingFee": "0.00001"
-    }
-  ]
+    {"from":1,"to":4,"gasFee":0,"tradingFee":0.0014,"symbol":"ETH"},
+    {"from":4,"to":1,"gasFee":0,"tradingFee":0.0055,"symbol":"ETH"},
+    {"from":2,"to":4,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":2,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":16,"to":4,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":16,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":7,"to":4,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":7,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":19,"to":4,"gasFee":0.05,"tradingFee":0.0015,"symbol":"ETH"},
+    {"from":4,"to":19,"gasFee":0,"tradingFee":0.0014,"symbol":"ETH"},
+    {"from":4,"to":3,"gasFee":0,"tradingFee":0.0015,"symbol":"ETH"},
+    {"from":14,"to":4,"gasFee":0.03,"tradingFee":0.0015,"symbol":"ETH"},
+    {"from":4,"to":14,"gasFee":0,"tradingFee":0.0014,"symbol":"ETH"},
+    {"from":21,"to":4,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":21,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":23,"to":4,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":23,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":6,"to":4,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":6,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":17,"to":4,"gasFee":0.05,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":17,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":24,"to":4,"gasFee":0.05,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":24,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":30,"to":4,"gasFee":0.1,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":30,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":15,"to":4,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":15,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":31,"to":4,"gasFee":0.1,"tradingFee":0.0013,"symbol":"ETH"},
+    {"from":4,"to":31,"gasFee":0,"tradingFee":0.0013,"symbol":"ETH"}
+    ]
