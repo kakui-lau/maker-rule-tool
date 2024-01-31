@@ -29,7 +29,9 @@ const chainMapping: { [internalId: number]: string[] } = {
   24: ['mantle'],
   25: ['opbnb', 'opbsc'],
   30: ['zora'],
-  31: ['manta']
+  31: ['manta'],
+  36: ['kroma'],
+  38: ['zkfair']
 };
 
 const makersAddrMap: any = {
@@ -68,9 +70,9 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
   }
   // ------------------------ FE ------------------------
   for (const row of JSON.parse(JSON.stringify(newRules))) {
-    const gas1 = +String(row.gasFee).replace('%', '');
+    const gas1 = +String(row.gasFee).replace('%', '').replace(' ', '');
     row.gasFee = gas1 * 10 as any;
-    row.tradingFee = +row.tradingFee as any;
+    row.tradingFee = +String(row.tradingFee).replace('U', '').replace(' ', '');
     const fromChain = chains.find(c =>
       String(c.internalId) == String(row.from) ||
       chainMapping[Number(c.internalId)].find(name => name.toLowerCase() === String(row.from).toLowerCase()));
@@ -112,8 +114,8 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
         "tradingFee": row.tradingFee,
         "makerAddress": makersAddrMap[row.symbol],
         "sender": makersAddrMap[row.symbol],
-        "maxPrice": 5,
-        "minPrice": 0.005,
+        "maxPrice": 3,
+        "minPrice": 0.001,
         "startTime": 0,
         "endTime": 99999999999999
       }
@@ -130,11 +132,11 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
         throw new Error('缺少地址')
       }
       if (row.symbol === 'USDT' || row.symbol === 'USDC') {
-        newRuleItem.maxPrice = 20000;
+        newRuleItem.maxPrice = 10000;
         newRuleItem.minPrice = 0.1;
       } else if (row.symbol === 'ETH') {
-        newRuleItem.maxPrice = 5;
-        newRuleItem.minPrice = 0.005;
+        newRuleItem.maxPrice = 3;
+        newRuleItem.minPrice = 0.001;
       }
       const { maxPrice, minPrice } = row as any;
       if (maxPrice) {
