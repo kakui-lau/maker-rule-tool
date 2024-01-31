@@ -1,0 +1,242 @@
+{
+	"1-2": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 1.2,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 0.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"2-1": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 10,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 10,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"1-6": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 1.2,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 0.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"6-1": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 10,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 10,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"1-7": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 1.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 1.4,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"7-1": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 10,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 10,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"2-6": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 0.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 0.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"6-2": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 0.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 0.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"2-7": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 1.4,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 1.4,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"7-2": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 0.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 0.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"7-6": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 0.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 0.8,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	},
+	"6-7": {
+		"USDT-USDC": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 1.4,
+			"gasFee": 0.35,
+			"slippage": 50
+		},
+		"USDC-USDT": {
+			"makerAddress": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"sender": "0x1C84DAA159cf68667A54bEb412CDB8B2c193fb32",
+			"maxPrice": 100,
+			"minPrice": 0.1,
+			"tradingFee": 1.4,
+			"gasFee": 0.35,
+			"slippage": 50
+		}
+	}
+}
