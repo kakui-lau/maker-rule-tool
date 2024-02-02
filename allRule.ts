@@ -29,7 +29,9 @@ const chainMapping: { [internalId: number]: string[] } = {
   24: ['mantle'],
   25: ['opbnb', 'opbsc'],
   30: ['zora'],
-  31: ['manta']
+  31: ['manta'],
+  36: ['kroma'],
+  38: ['zkfair']
 };
 
 const makersAddrMap: any = {
@@ -47,7 +49,7 @@ for (const chain of chains) {
 }
 
 for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c67432656d59144ceff962e8faf8926599bcf8"]) {
-  let rules: any[] = [];
+  let rules: any = {};
   let oldMakerList:any[] = [];
   if (evmMaker === '0x80c67432656d59144ceff962e8faf8926599bcf8') {
     rules = JSON.parse(fs.readFileSync(path.join(pathJson.FE, 'maker-1.json')).toString());
@@ -68,9 +70,9 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
   }
   // ------------------------ FE ------------------------
   for (const row of JSON.parse(JSON.stringify(newRules))) {
-    const gas1 = +String(row.gasFee).replace('%', '');
+    const gas1 = +String(row.gasFee).replace('%', '').replace(' ', '');
     row.gasFee = gas1 * 10 as any;
-    row.tradingFee = +row.tradingFee as any;
+    row.tradingFee = +String(row.tradingFee).replace('U', '').replace(' ', '');
     const fromChain = chains.find(c =>
       String(c.internalId) == String(row.from) ||
       chainMapping[Number(c.internalId)].find(name => name.toLowerCase() === String(row.from).toLowerCase()));
@@ -112,8 +114,8 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
         "tradingFee": row.tradingFee,
         "makerAddress": makersAddrMap[row.symbol],
         "sender": makersAddrMap[row.symbol],
-        "maxPrice": 5,
-        "minPrice": 0.005,
+        "maxPrice": 3,
+        "minPrice": 0.001,
         "startTime": 0,
         "endTime": 99999999999999
       }
@@ -130,11 +132,11 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
         throw new Error('缺少地址')
       }
       if (row.symbol === 'USDT' || row.symbol === 'USDC') {
-        newRuleItem.maxPrice = 20000;
+        newRuleItem.maxPrice = 10000;
         newRuleItem.minPrice = 0.1;
       } else if (row.symbol === 'ETH') {
-        newRuleItem.maxPrice = 5;
-        newRuleItem.minPrice = 0.005;
+        newRuleItem.maxPrice = 3;
+        newRuleItem.minPrice = 0.001;
       }
       const { maxPrice, minPrice } = row as any;
       if (maxPrice) {
@@ -197,11 +199,11 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
     const fromChainId = +arrs[0];
     const toChainId = +arrs[1];
     for (const symbolId in symbolResult) {
-      if (evmMaker == '0xe4edb277e41dc89ab076a1f049f4a3efa700bce8') {
+      // if (evmMaker == '0xe4edb277e41dc89ab076a1f049f4a3efa700bce8') {
         if (symbolId != 'ETH-ETH' && symbolId != 'BNB-BNB') {
           continue;
         }
-      }
+      // }
       const [fromTokenSymbol, toTokenSymbol] = symbolId.split('-');
       if (fromTokenSymbol != toTokenSymbol) {
         console.warn('不支持跨币种');
@@ -350,11 +352,55 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
   }
   // ------------------------ backend ------------------------
 
-  if (evmMaker === "0x80c67432656d59144ceff962e8faf8926599bcf8") {
-    fs.writeFileSync(path.join(pathJson.FE, 'maker-1.json'), JSON.stringify(rules));
-    fs.writeFileSync(path.join(pathJson.backend, 'maker-80c.json'), JSON.stringify(orderBy(makerList, ['c1ID', 'c2ID'], ['asc', 'asc']), null,"\t"))
-  } else if (evmMaker === "0xe4edb277e41dc89ab076a1f049f4a3efa700bce8") {
-    fs.writeFileSync(path.join(pathJson.FE, 'maker-2.json'), JSON.stringify(rules));
-    fs.writeFileSync(path.join(pathJson.backend, 'maker-e4e.json'), JSON.stringify(orderBy(makerList, ['c1ID', 'c2ID'], ['asc', 'asc']), null,"\t"))
+  const r80cRules = {};
+  const re4eRules = {};
+  const erc20Rules = {};
+  const otherRules = {};
+  for (const chainIdPair in rules) {
+    for (const symbolPair in rules[chainIdPair]) {
+      const sp = String(symbolPair);
+      const data = JSON.parse(JSON.stringify(rules[chainIdPair][symbolPair]));
+      delete data.startTime;
+      delete data.endTime;
+      if (["ETH-ETH", "BNB-BNB"].includes(sp)) {
+        if (evmMaker === "0x80c67432656d59144ceff962e8faf8926599bcf8") {
+          r80cRules[chainIdPair] = r80cRules[chainIdPair] || {};
+          r80cRules[chainIdPair][symbolPair] = data;
+        } else {
+          re4eRules[chainIdPair] = re4eRules[chainIdPair] || {};
+          re4eRules[chainIdPair][symbolPair] = data;
+        }
+      } else if (["USDC-USDC", "USDT-USDT", "DAI-DAI"].includes(sp)) {
+        erc20Rules[chainIdPair] = erc20Rules[chainIdPair] || {};
+        erc20Rules[chainIdPair][symbolPair] = data;
+      } else {
+        otherRules[chainIdPair] = otherRules[chainIdPair] || {};
+        otherRules[chainIdPair][symbolPair] = data;
+      }
+    }
   }
+  if (Object.keys(erc20Rules).length) {
+    fs.writeFileSync(`./config/consul_config/erc20.json`, objectToString(erc20Rules));
+  }
+  if (Object.keys(otherRules).length) {
+    fs.writeFileSync(`./config/consul_config/other.json`, objectToString(otherRules));
+  }
+
+  if (evmMaker === "0x80c67432656d59144ceff962e8faf8926599bcf8") {
+    fs.writeFileSync(path.join(pathJson.FE, 'maker-1.json'), objectToString(rules));
+    fs.writeFileSync(path.join(pathJson.backend, 'maker-80c.json'), JSON.stringify(orderBy(makerList, ['c1ID', 'c2ID'], ['asc', 'asc']), null,"\t"))
+    fs.writeFileSync(`./config/consul_config/80c.json`, objectToString(r80cRules));
+  } else if (evmMaker === "0xe4edb277e41dc89ab076a1f049f4a3efa700bce8") {
+    fs.writeFileSync(path.join(pathJson.FE, 'maker-2.json'), objectToString(rules));
+    fs.writeFileSync(path.join(pathJson.backend, 'maker-e4e.json'), JSON.stringify(orderBy(makerList, ['c1ID', 'c2ID'], ['asc', 'asc']), null,"\t"))
+    fs.writeFileSync(`./config/consul_config/e4e.json`, objectToString(re4eRules));
+  }
+}
+
+function objectToString(obj) {
+  const objJson = JSON.stringify(obj, null, "\t");
+  const strArr = objJson.split(/\r\n|\n|\r/gm).map(item => {
+    return item;
+  });
+  return strArr.join("\r\n");
 }
