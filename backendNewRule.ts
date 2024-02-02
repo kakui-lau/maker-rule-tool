@@ -96,16 +96,16 @@ for (const chainId in feMakerList) {
             ruleItem.c2ID = +toChainId;
             ruleItem.c1Name = fromChain.name.toLocaleLowerCase();
             ruleItem.c2Name = toChain.name.toLocaleLowerCase();
-            ruleItem.t1Address = fromToken.address;
-            ruleItem.t2Address = toToken.address;
+            ruleItem.t1Address = fromToken.address.toLocaleLowerCase();
+            ruleItem.t2Address = toToken.address.toLocaleLowerCase();
 
         } else {
             ruleItem.c1ID = +toChainId;
             ruleItem.c2ID = +fromChainId;
             ruleItem.c1Name = toChain.name.toLocaleLowerCase();
             ruleItem.c2Name = fromChain.name.toLocaleLowerCase();
-            ruleItem.t1Address = toToken.address;
-            ruleItem.t2Address = fromToken.address;
+            ruleItem.t1Address = toToken.address.toLocaleLowerCase();
+            ruleItem.t2Address = fromToken.address.toLocaleLowerCase();
         }
         let pair1 = feMakerList[`${ruleItem.c1ID}-${ruleItem.c2ID}`];
         if (pair1 && pair1[symbolId]) {
