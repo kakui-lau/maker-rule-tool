@@ -31,7 +31,10 @@ const chainMapping: { [internalId: number]: string[] } = {
   30: ['zora'],
   31: ['manta'],
   36: ['kroma'],
-  38: ['zkfair']
+  38: ['zkfair'],
+  40: ['blast'],
+  41: ["zeta"],
+  47: ["mode"]
 };
 
 const makersAddrMap: any = {
