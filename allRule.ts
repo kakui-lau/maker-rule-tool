@@ -31,7 +31,10 @@ const chainMapping: { [internalId: number]: string[] } = {
   30: ['zora'],
   31: ['manta'],
   36: ['kroma'],
-  38: ['zkfair']
+  38: ['zkfair'],
+  40: ['blast'],
+  41: ["zeta"],
+  47: ["mode"]
 };
 
 const makersAddrMap: any = {
@@ -52,7 +55,7 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
   let rules: any = {};
   let oldMakerList:any[] = [];
   if (evmMaker === '0x80c67432656d59144ceff962e8faf8926599bcf8') {
-    rules = JSON.parse(fs.readFileSync(path.join(pathJson.FE, 'maker-1.json')).toString());
+    rules = JSON.parse(fs.readFileSync(path.join(pathJson.FE, '80c-prod.json')).toString());
     oldMakerList = JSON.parse(fs.readFileSync(path.join(pathJson.backend, 'maker-80c.json')).toString());
 
     makersAddrMap['ETH'] = '0x80c67432656d59144ceff962e8faf8926599bcf8';
@@ -60,7 +63,7 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
     makersAddrMap['BNB'] = '0x80c67432656d59144ceff962e8faf8926599bcf8';
     makersAddrMap['BNB-4'] = '0x07b393627bd514d2aa4c83e9f0c468939df15ea3c29980cd8e7be3ec847795f0';
   } else if (evmMaker == '0xe4edb277e41dc89ab076a1f049f4a3efa700bce8') {
-    rules = JSON.parse(fs.readFileSync(path.join(pathJson.FE, 'maker-2.json')).toString());
+    rules = JSON.parse(fs.readFileSync(path.join(pathJson.FE, 'e4e-prod.json')).toString());
     oldMakerList = JSON.parse(fs.readFileSync(path.join(pathJson.backend, 'maker-e4e.json')).toString());
 
     makersAddrMap['ETH'] = '0xe4edb277e41dc89ab076a1f049f4a3efa700bce8';
@@ -115,7 +118,7 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
         "makerAddress": makersAddrMap[row.symbol],
         "sender": makersAddrMap[row.symbol],
         "maxPrice": 3,
-        "minPrice": 0.001,
+        "minPrice": 0.00005,
         "startTime": 0,
         "endTime": 99999999999999
       }
@@ -136,7 +139,7 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
         newRuleItem.minPrice = 0.1;
       } else if (row.symbol === 'ETH') {
         newRuleItem.maxPrice = 3;
-        newRuleItem.minPrice = 0.001;
+        newRuleItem.minPrice = 0.00005;
       }
       const { maxPrice, minPrice } = row as any;
       if (maxPrice) {
@@ -387,11 +390,11 @@ for (const evmMaker of ["0xe4edb277e41dc89ab076a1f049f4a3efa700bce8", "0x80c6743
   }
 
   if (evmMaker === "0x80c67432656d59144ceff962e8faf8926599bcf8") {
-    fs.writeFileSync(path.join(pathJson.FE, 'maker-1.json'), objectToString(rules));
+    fs.writeFileSync(path.join(pathJson.FE, '80c-prod.json'), objectToString(rules));
     fs.writeFileSync(path.join(pathJson.backend, 'maker-80c.json'), JSON.stringify(orderBy(makerList, ['c1ID', 'c2ID'], ['asc', 'asc']), null,"\t"))
     fs.writeFileSync(`./config/consul_config/80c.json`, objectToString(r80cRules));
   } else if (evmMaker === "0xe4edb277e41dc89ab076a1f049f4a3efa700bce8") {
-    fs.writeFileSync(path.join(pathJson.FE, 'maker-2.json'), objectToString(rules));
+    fs.writeFileSync(path.join(pathJson.FE, 'e4e-prod.json'), objectToString(rules));
     fs.writeFileSync(path.join(pathJson.backend, 'maker-e4e.json'), JSON.stringify(orderBy(makerList, ['c1ID', 'c2ID'], ['asc', 'asc']), null,"\t"))
     fs.writeFileSync(`./config/consul_config/e4e.json`, objectToString(re4eRules));
   }
